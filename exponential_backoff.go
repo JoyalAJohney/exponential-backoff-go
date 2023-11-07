@@ -6,10 +6,7 @@ import (
 )
 
 func exponentialBackoff(baseDelay time.Duration, maxDelay time.Duration, attempt int) time.Duration {
-	/* 
-		left shift 1 (0001) by number of attempts
-		eg: if attempts = 3, then 1 << 3 = 1000 = 8
-	*/
+	// left shift 1 (0001) by number of attempts
 	exponentialDelay := baseDelay * (1 << attempt)
 
 	// Exponentail delay capped at maxDelay
